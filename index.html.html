@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تقديم وظيفة مندوب مبيعات ميداني - ZOZ</title>
+    <!-- تحميل Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- تحميل خط Cairo العربي الاحترافي -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Cairo', 'sans-serif'],
+                    },
+                    colors: {
+                        navy: {
+                            50: '#f0f4f8',
+                            100: '#d9e2ec',
+                            200: '#bcccdc',
+                            600: '#1e3a8a',
+                            700: '#172554',
+                            800: '#0f172a',
+                            900: '#090e1a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* تحسينات بصرية إضافية */
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #f8fafc;
+        }
+        .fade-in {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="text-slate-800 antialiased min-h-screen flex flex-col justify-between bg-slate-50">
+
+    <!-- الشريط العلوي (Header) -->
+    <header class="bg-navy-800 text-white shadow-md">
+        <div class="max-w-3xl mx-auto px-4 py-6 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="text-center sm:text-right">
+                <div class="inline-flex items-center gap-2 bg-navy-600/50 border border-navy-200/20 px-3 py-1 rounded-full text-xs font-semibold text-blue-200 mb-2">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    التقديم متاح الآن
+                </div>
+                <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight">شركة ZOZ</h1>
+                <p class="text-slate-300 text-sm sm:text-base mt-1">استمارة التقديم لوظيفة <span class="text-white font-semibold">مندوب مبيعات ميداني (Outdoor Sales)</span></p>
+            </div>
+            <div class="bg-white/10 backdrop-blur-sm rounded-xl p-3 text-center border border-white/10 min-w-[140px]">
+                <p class="text-xs text-slate-300">المناطق المطلوبة</p>
+                <p class="text-sm font-bold text-white mt-0.5">القاهرة والجيزة</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- المحتوى الرئيسي (Form Container) -->
+    <main class="flex-grow max-w-3xl w-full mx-auto px-4 py-8 sm:px-6">
+        
+        <!-- بطاقة الاستمارة -->
+        <div id="formCard" class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+            <div class="bg-navy-50 border-b border-slate-200 px-6 py-4">
+                <h2 class="text-lg font-bold text-navy-800">بيانات المتقدم</h2>
+                <p class="text-xs sm:text-sm text-slate-500 mt-0.5">يرجى ملء جميع الحقول المطلوبة بدقة ليتم التواصل معك لتحديد موعد المقابلة.</p>
+            </div>
+
+            <form id="applicationForm" class="p-6 space-y-5">
+                
+                <!-- الاسم بالكامل -->
+                <div>
+                    <label for="fullName" class="block text-sm font-bold text-slate-700 mb-1.5">
+                        الاسم بالكامل <span class="text-red-500">*</span>
+                    </label>
+                    <input type="text" id="fullName" name="name" required placeholder="مثال: أحمد محمد علي"
+                        class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:border-navy-600 focus:ring-2 focus:ring-navy-600/20 outline-none transition text-sm">
+                </div>
+
+                <!-- رقم الموبايل والسن (صف واحد في الشاشات المتوسطة) -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div>
+                        <label for="phone" class="block text-sm font-bold text-slate-700 mb-1.5">
+                            رقم الموبايل (واتساب) <span class="text-red-500">*</span>
+                        </label>
+                        <input type="tel" id="phone" name="phone" required placeholder="01xxxxxxxxx" pattern="[0-9+\s-]{10,15}"
+                            class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:border-navy-600 focus:ring-2 focus:ring-navy-600/20 outline-none transition text-sm text-left" dir="ltr">
+                    </div>
+
+                    <div>
+                        <label for="age" class="block text-sm font-bold text-slate-700 mb-1.5">
+                            السن <span class="text-red-500">*</span>
+                        </label>
+                        <input type="number" id="age" name="age" required min="18" max="60" placeholder="مثال: 25"
+                            class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:border-navy-600 focus:ring-2 focus:ring-navy-600/20 outline-none transition text-sm">
+                    </div>
+                </div>
+
+                <!-- المنطقة المطلوبة للعمل والمؤهل الدراسي -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div>
+                        <label for="zone" class="block text-sm font-bold text-slate-700 mb-1.5">
+                            المنطقة المطلوبة للعمل <span class="text-red-500">*</span>
+                        </label>
+                        <select id="zone" name="zone" required
+                            class="w-full px-4 py-2.5 rounded-xl border border-slate-300 bg-white focus:border-navy-600 focus:ring-2 focus:ring-navy-600/20 outline-none transition text-sm">
+                            <option value="" disabled selected>اختر المنطقة...</option>
+                            <option value="مصر الجديدة">مصر الجديدة</option>
+                            <option value="مدينة نصر">مدينة نصر</option>
+                            <option value="السادس من أكتوبر">السادس من أكتوبر</option>
+                            <option value="المعادي">المعادي</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="qualification" class="block text-sm font-bold text-slate-700 mb-1.5">
+                            المؤهل الدراسي <span class="text-red-500">*</span>
+                        </label>
+                        <input type="text" id="qualification" name="qualification" required placeholder="مثال: بكالوريوس تجارة / طالب جامعي"
+                            class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:border-navy-600 focus:ring-2 focus:ring-navy-600/20 outline-none transition text-sm">
+                    </div>
+                </div>
+
+                <!-- العنوان بالتفصيل -->
+                <div>
+                    <label for="address" class="block text-sm font-bold text-slate-700 mb-1.5">
+                        العنوان بالتفصيل <span class="text-red-500">*</span>
+                    </label>
+                    <input type="text" id="address" name="address" required placeholder="الحي، الشارع، أقرب معلم"
+                        class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:border-navy-600 focus:ring-2 focus:ring-navy-600/20 outline-none transition text-sm">
+                </div>
+
+                <!-- الخبرات السابقة في المبيعات -->
+                <div>
+                    <label for="experience" class="block text-sm font-bold text-slate-700 mb-1.5">
+                        الخبرات السابقة في المبيعات <span class="text-red-500">*</span>
+                    </label>
+                    <textarea id="experience" name="experience" rows="3" required placeholder="اذكر مجالات العمل السابقة، مدة الخبرة، أو اكتب (لا يوجد) إذا كنت حديث التخرج..."
+                        class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:border-navy-600 focus:ring-2 focus:ring-navy-600/20 outline-none transition text-sm resize-y"></textarea>
+                </div>
+
+                <!-- عرفت عننا إزاي؟ -->
+                <div class="pt-2 border-t border-slate-100">
+                    <label for="source" class="block text-sm font-bold text-slate-700 mb-1.5">
+                        عرفت عننا إزاي؟ <span class="text-red-500">*</span>
+                    </label>
+                    <select id="source" name="source" required
+                        class="w-full px-4 py-2.5 rounded-xl border border-slate-300 bg-white focus:border-navy-600 focus:ring-2 focus:ring-navy-600/20 outline-none transition text-sm">
+                        <option value="" disabled selected>اختر مصدر معرفتك بالوظيفة...</option>
+                        <option value="فيسبوك">فيسبوك</option>
+                        <option value="واتساب">واتساب</option>
+                        <option value="تليجرام">تليجرام</option>
+                        <option value="لينكدإن">لينكدإن</option>
+                        <option value="انستجرام">انستجرام</option>
+                        <option value="ترشيح / إحالة">ترشيح / إحالة</option>
+                        <option value="أخرى">أخرى</option>
+                    </select>
+                </div>
+
+                <!-- الحقل الديناميكي الذكي لتفاصيل المصدر -->
+                <div id="dynamicSourceContainer" class="hidden fade-in bg-navy-50/70 p-4 rounded-xl border border-navy-100">
+                    <label id="dynamicSourceLabel" for="groupName" class="block text-sm font-bold text-navy-800 mb-1.5">
+                        تفاصيل المصدر <span class="text-red-500">*</span>
+                    </label>
+                    <input type="text" id="groupName" name="groupName" placeholder="اكتب التفاصيل هنا..."
+                        class="w-full px-4 py-2.5 rounded-xl border border-slate-300 bg-white focus:border-navy-600 focus:ring-2 focus:ring-navy-600/20 outline-none transition text-sm">
+                </div>
+
+                <!-- زر الإرسال -->
+                <div class="pt-4">
+                    <button type="submit" id="submitBtn"
+                        class="w-full bg-navy-700 hover:bg-navy-800 text-white font-bold py-3.5 px-6 rounded-xl shadow-md hover:shadow-lg transition duration-200 flex items-center justify-center gap-2 text-base">
+                        <span>إرسال الطلب</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                        </svg>
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- رسالة التأكيد الاحترافية (تظهر بعد الإرسال) -->
+        <div id="successCard" class="hidden fade-in bg-white rounded-2xl shadow-sm border border-emerald-200 p-8 text-center">
+            <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-9 w-9" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                </svg>
+            </div>
+            <h2 class="text-2xl font-extrabold text-navy-800 mb-2">تم استلام طلبك بنجاح!</h2>
+            <p class="text-slate-600 text-sm sm:text-base max-w-md mx-auto mb-6">
+                شكراً لتقديمك في شركة <span class="font-bold text-navy-700">ZOZ</span>. سيقوم فريق الموارد البشرية بمراجعة بياناتك والتواصل معك قريباً لتحديد موعد المقابلة.
+            </p>
+
+            <!-- عرض وضع الإرسال وملخص البيانات -->
+            <div id="submissionDetails" class="bg-slate-50 rounded-xl p-4 border border-slate-200 text-right text-sm mb-6 max-w-lg mx-auto">
+                <div class="flex items-center justify-between border-b border-slate-200 pb-2 mb-3">
+                    <span class="font-bold text-navy-800">ملخص البيانات المرسلة</span>
+                    <span id="modeBadge" class="text-xs px-2.5 py-0.5 rounded-full font-semibold"></span>
+                </div>
+                <div id="summaryContent" class="space-y-1.5 text-slate-700"></div>
+            </div>
+
+            <button onclick="resetForm()" class="bg-navy-50 hover:bg-navy-100 text-navy-700 font-bold py-2.5 px-6 rounded-xl transition text-sm">
+                تقديم طلب جديد
+            </button>
+        </div>
+
+        <!-- قسم إعدادات المسؤول (HR) القابل للطي -->
+        <div class="mt-8 border border-slate-200 rounded-xl bg-white overflow-hidden">
+            <button type="button" onclick="toggleHrSettings()" class="w-full px-5 py-3 bg-slate-100/70 hover:bg-slate-100 flex items-center justify-between text-xs font-bold text-slate-600 transition">
+                <span class="flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-navy-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                    إعدادات الربط (خاص بمسؤول الموارد البشرية HR)
+                </span>
+                <span id="hrArrow" class="text-slate-400">▼</span>
+            </button>
+            <div id="hrSettingsPanel" class="hidden p-5 border-t border-slate-200 space-y-3">
+                <p class="text-xs text-slate-500">
+                    لربط هذه الاستمارة مباشرةً بملف <strong>Google Sheets</strong> الخاص بكِ، ضعي رابط <strong>Google Apps Script Web App URL</strong> هنا. في حال تركه فارغاً، ستعمل الاستمارة في وضع المعاينة التجريبية.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-2">
+                    <input type="url" id="webAppUrl" placeholder="https://script.google.com/macros/s/..." dir="ltr"
+                        class="flex-grow px-3 py-2 rounded-lg border border-slate-300 text-xs focus:border-navy-600 outline-none">
+                    <button type="button" onclick="saveWebAppUrl()" class="bg-navy-700 hover:bg-navy-800 text-white text-xs font-bold px-4 py-2 rounded-lg transition">
+                        حفظ الرابط
+                    </button>
+                </div>
+                <p id="urlSaveStatus" class="text-xs text-emerald-600 font-semibold hidden">✓ تم حفظ الرابط بنجاح في المتصفح.</p>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- التذييل (Footer) -->
+    <footer class="bg-white border-t border-slate-200 py-4 text-center text-xs text-slate-500 mt-8">
+        <p>© 2026 شركة ZOZ - إدارة الموارد البشرية. جميع الحقوق محفوظة.</p>
+    </footer>
+
+    <!-- المنطق البرمجي (JavaScript) -->
+    <script>
+        const sourceSelect = document.getElementById('source');
+        const dynamicContainer = document.getElementById('dynamicSourceContainer');
+        const dynamicLabel = document.getElementById('dynamicSourceLabel');
+        const groupNameInput = document.getElementById('groupName');
+        const form = document.getElementById('applicationForm');
+        const formCard = document.getElementById('formCard');
+        const successCard = document.getElementById('successCard');
+        const webAppUrlInput = document.getElementById('webAppUrl');
+
+        // تحميل رابط Web App المحفوظ مسبقاً إن وجد
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedUrl = localStorage.getItem('zoz_hr_webapp_url');
+            if (savedUrl) {
+                webAppUrlInput.value = savedUrl;
+            }
+        });
+
+        // الميزة الديناميكية لتغيير عنوان حقل تفاصيل المصدر
+        sourceSelect.addEventListener('change', function () {
+            const selected = this.value;
+            if (!selected) {
+                dynamicContainer.classList.add('hidden');
+                groupNameInput.removeAttribute('required');
+                return;
+            }
+
+            let labelText = '';
+            let placeholderText = '';
+
+            switch (selected) {
+                case 'فيسبوك':
+                    labelText = 'ما اسم جروب الفيسبوك الذي رأيت الإعلان فيه؟';
+                    placeholderText = 'مثال: جروب وظائف مبيعات القاهرة...';
+                    break;
+                case 'واتساب':
+                    labelText = 'ما اسم جروب الواتساب؟';
+                    placeholderText = 'مثال: جروب وظائف مصر اليوم...';
+                    break;
+                case 'تليجرام':
+                    labelText = 'ما اسم قناة أو جروب التليجرام؟';
+                    placeholderText = 'مثال: قناة وظائف أوت دور...';
+                    break;
+                case 'ترشيح / إحالة':
+                    labelText = 'من الذي رشحك للوظيفة؟';
+                    placeholderText = 'اكتب اسم الشخص الذي رشحك...';
+                    break;
+                default:
+                    labelText = 'تفاصيل إضافية عن المصدر';
+                    placeholderText = 'اكتب اسم الصفحة أو الحساب أو تفاصيل المصدر...';
+                    break;
+            }
+
+            dynamicLabel.innerHTML = `${labelText} <span class="text-red-500">*</span>`;
+            groupNameInput.placeholder = placeholderText;
+            groupNameInput.setAttribute('required', 'true');
+            dynamicContainer.classList.remove('hidden');
+        });
+
+        // طي وفتح إعدادات HR
+        function toggleHrSettings() {
+            const panel = document.getElementById('hrSettingsPanel');
+            const arrow = document.getElementById('hrArrow');
+            panel.classList.toggle('hidden');
+            arrow.textContent = panel.classList.contains('hidden') ? '▼' : '▲';
+        }
+
+        // حفظ رابط Web App
+        function saveWebAppUrl() {
+            const url = webAppUrlInput.value.trim();
+            localStorage.setItem('zoz_hr_webapp_url', url);
+            const status = document.getElementById('urlSaveStatus');
+            status.classList.remove('hidden');
+            setTimeout(() => status.classList.add('hidden'), 3000);
+        }
+
+        // معالجة إرسال النموذج
+        form.addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const submitBtn = document.getElementById('submitBtn');
+            const originalBtnHtml = submitBtn.innerHTML;
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span>جاري الإرسال...</span>';
+
+            const formData = {
+                name: document.getElementById('fullName').value.trim(),
+                phone: document.getElementById('phone').value.trim(),
+                age: document.getElementById('age').value.trim(),
+                zone: document.getElementById('zone').value,
+                qualification: document.getElementById('qualification').value.trim(),
+                address: document.getElementById('address').value.trim(),
+                experience: document.getElementById('experience').value.trim(),
+                source: sourceSelect.value,
+                groupName: groupNameInput.value.trim()
+            };
+
+            const webAppUrl = webAppUrlInput.value.trim();
+            const modeBadge = document.getElementById('modeBadge');
+
+            if (webAppUrl) {
+                // الإرسال الفعلي إلى Google Apps Script
+                try {
+                    await fetch(webAppUrl, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(formData)
+                    });
+                    modeBadge.textContent = 'تم الإرسال للشيت مباشرة';
+                    modeBadge.className = 'text-xs px-2.5 py-0.5 rounded-full font-semibold bg-emerald-100 text-emerald-700';
+                } catch (error) {
+                    console.error('Error:', error);
+                    modeBadge.textContent = 'تم الحفظ (وضع المعاينة)';
+                    modeBadge.className = 'text-xs px-2.5 py-0.5 rounded-full font-semibold bg-amber-100 text-amber-700';
+                }
+            } else {
+                // وضع المعاينة التجريبية
+                modeBadge.textContent = 'وضع المعاينة التجريبية';
+                modeBadge.className = 'text-xs px-2.5 py-0.5 rounded-full font-semibold bg-blue-100 text-navy-700';
+            }
+
+            // عرض ملخص البيانات
+            const summaryContent = document.getElementById('summaryContent');
+            summaryContent.innerHTML = `
+                <p><strong>الاسم:</strong> ${formData.name}</p>
+                <p><strong>الموبايل:</strong> <span dir="ltr">${formData.phone}</span></p>
+                <p><strong>المنطقة المطلوبة:</strong> ${formData.zone}</p>
+                <p><strong>المصدر:</strong> ${formData.source} (${formData.groupName})</p>
+            `;
+
+            // التبديل إلى بطاقة النجاح
+            formCard.classList.add('hidden');
+            successCard.classList.remove('hidden');
+
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalBtnHtml;
+        });
+
+        // إعادة تعيين النموذج لتقديم طلب جديد
+        function resetForm() {
+            form.reset();
+            dynamicContainer.classList.add('hidden');
+            successCard.classList.add('hidden');
+            formCard.classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
